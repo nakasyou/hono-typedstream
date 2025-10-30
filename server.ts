@@ -24,7 +24,7 @@ import type { TYPED_STREAM_KEY } from './shared.ts'
 export const typedStream = <C extends Context, T>(
   c: C,
   streamable: ReadableStream<T> | ((c: C) => AsyncGenerator<T, void, unknown>)
-) => {
+): Response & TypedResponse<T, StatusCode, TYPED_STREAM_KEY> => {
   return streamText(
     c,
     async cb => {

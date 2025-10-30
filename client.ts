@@ -89,7 +89,7 @@ export class JSONParserStream<T> extends TransformStream<string, T> {
  */
 export const receiveTypedStream = <T>(
   res: ClientResponse<T, StatusCode, TYPED_STREAM_KEY>
-) => {
+): ReadableStream<T> => {
   if (!res.body) {
     throw new Error('Response body is null')
   }
