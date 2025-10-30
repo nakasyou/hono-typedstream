@@ -1,0 +1,17 @@
+{
+    "name": "@ns/hono-typedstream",
+    "version": "0.1.0",
+    "exports": {
+        ".": "./server.ts",
+        "./client": "./client.ts"
+    },
+    "imports": {
+        "@std/assert": "jsr:@std/assert@^1.0.15",
+        "hono": "npm:hono@^4.10.4"
+    },
+    "fmt": {
+        "semiColons": false,
+        "singleQuote": true
+    },
+    "license": "MIT"
+}
