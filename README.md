@@ -11,11 +11,19 @@
 
 ## Installation
 
-The package will be published to [jsr.io/@ns/hono-typedstream](https://jsr.io/@ns/hono-typedstream). Import it via the JSR specifier.
+The package is published to [jsr.io/@ns/hono-typedstream](https://jsr.io/@ns/hono-typedstream).
+
+```
+npx jsr add @ns/hono-typedstream # npm
+yarn dlx jsr add @ns/hono-typedstream # yarn
+pnpm dlx jsr add @ns/hono-typedstream # pnpm
+bunx jsr add @ns/hono-typedstream # bun
+deno add jsr:@ns/hono-typedstream # deno
+```
 
 ```ts
-import { typedStream } from 'jsr:@ns/hono-typedstream'
-import { receiveTypedStream } from 'jsr:@ns/hono-typedstream/client'
+import { typedStream } from '@ns/hono-typedstream'
+import { receiveTypedStream } from '@ns/hono-typedstream/client'
 ```
 
 ## Usage
