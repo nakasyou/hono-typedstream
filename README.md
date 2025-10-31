@@ -66,7 +66,7 @@ import { hc } from 'hono/client'
 import { receiveTypedStream } from 'jsr:@ns/hono-typedstream/client'
 import type { AppType } from './server.ts'
 
-const client = hc<AppType>({ baseURL: 'https://example.com' })
+const client = hc<AppType>('/')
 
 const res = await client.events.$get()
 
