@@ -12,5 +12,16 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - name: Publish package
-        run: npx jsr publish
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - uses: denoland/setup-deno@v2
+
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - run: deno task build
+
+      - run: npm publish
+      - run: npx jsr publish

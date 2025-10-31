@@ -14,12 +14,14 @@ import type { TYPED_STREAM_KEY } from './shared.ts'
  * @param streamable Readable stream or async generator that produces JSON-serializable chunks.
  * @returns Typed streaming response for Hono.
  * @example
+ * ```ts
  * const app = new Hono()
  * app.get('/events', c =>
  *   typedStream(c, async function* () {
  *     yield { type: 'tick', at: Date.now() }
  *   })
  * )
+ * ```
  */
 export const typedStream = <C extends Context, T>(
   c: C,

@@ -7,9 +7,22 @@
 - **Type-safe streaming**: Share the same generic type between server and client thanks to `TypedResponse` support.
 - **Simple API surface**: Call `typedStream` on the server and `receiveTypedStream` on the client—no manual plumbing required.
 - **Built for Hono**: Leverages `streamText`, works smoothly with `testClient`, and fits naturally into existing Hono apps.
-- **Batteries included**: Ships `TextLineSplitterStream` and `JSONParserStream` to handle newline-delimited JSON payloads.
 
 ## Installation
+
+### npm
+
+https://www.npmjs.com/packages/hono-typedstream
+
+```
+npm install hono-typedstream # npm
+yarn add hono-typedstream # yarn
+pnpm add hono-typedstream # pnpm
+bun add hono-typedstream # bun
+deno add npm:hono-typedstream # deno
+```
+
+### jsr
 
 The package is published to [jsr.io/@ns/hono-typedstream](https://jsr.io/@ns/hono-typedstream).
 
@@ -22,8 +35,8 @@ deno add jsr:@ns/hono-typedstream # deno
 ```
 
 ```ts
-import { typedStream } from '@ns/hono-typedstream'
-import { receiveTypedStream } from '@ns/hono-typedstream/client'
+import { typedStream } from 'hono-typedstream'
+import { receiveTypedStream } from 'hono-typedstream/client'
 ```
 
 ## Usage
@@ -34,7 +47,7 @@ import { receiveTypedStream } from '@ns/hono-typedstream/client'
 
 ```ts
 import { Hono } from 'hono'
-import { typedStream } from 'jsr:@ns/hono-typedstream'
+import { typedStream } from 'hono-typedstream'
 
 const app = new Hono()
 
@@ -63,7 +76,7 @@ export type AppType = typeof app
 
 ```ts
 import { hc } from 'hono/client'
-import { receiveTypedStream } from 'jsr:@ns/hono-typedstream/client'
+import { receiveTypedStream } from 'hono-typedstream/client'
 import type { AppType } from './server.ts'
 
 const client = hc<AppType>('/')

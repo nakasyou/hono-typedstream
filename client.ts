@@ -9,6 +9,7 @@ import type { TYPED_STREAM_KEY } from './shared.ts'
 /**
  * Splits a text stream into individual lines using newline delimiters.
  * @example
+ * ```ts
  * const readable = new ReadableStream({
  *   start(controller) {
  *     const encoder = new TextEncoder()
@@ -22,6 +23,7 @@ import type { TYPED_STREAM_KEY } from './shared.ts'
  * for await (const line of lines) {
  *   console.log(line) // "one", then "two"
  * }
+ * ```
  */
 export class TextLineSplitterStream extends TransformStream<string, string> {
   constructor() {
@@ -49,6 +51,7 @@ export class TextLineSplitterStream extends TransformStream<string, string> {
 /**
  * Parses newline-delimited JSON chunks into strongly typed objects.
  * @example
+ * ```ts
  * const readable = new ReadableStream({
  *   start(controller) {
  *     controller.enqueue(JSON.stringify({ ok: true }))
@@ -60,6 +63,7 @@ export class TextLineSplitterStream extends TransformStream<string, string> {
  * for await (const result of objects) {
  *   console.log(result.ok) // true
  * }
+ * ```
  */
 export class JSONParserStream<T> extends TransformStream<string, T> {
   constructor() {
@@ -81,11 +85,13 @@ export class JSONParserStream<T> extends TransformStream<string, T> {
  * @param res Response returned by the Hono client request.
  * @returns Readable stream of typed JSON objects.
  * @example
+ * ```ts
  * const res = await client.api.events.$get()
  * const dataStream = receiveTypedStream(res)
  * for await (const payload of dataStream) {
  *   console.log(payload.type)
  * }
+ * ```
  */
 export const receiveTypedStream = <T>(
   res: ClientResponse<T, StatusCode, TYPED_STREAM_KEY>
