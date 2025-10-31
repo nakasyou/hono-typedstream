@@ -18,6 +18,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
 
+      - run: deno i
+
       - name: Update npm
         run: npm install -g npm@latest
 
