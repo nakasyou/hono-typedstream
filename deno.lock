@@ -802,13 +802,9 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@^1.0.15",
-      "npm:hono@^4.10.4"
-    ],
-    "packageJson": {
-      "dependencies": [
-        "npm:tsup@^8.5.0",
-        "npm:typescript@^5.9.3"
-      ]
-    }
+      "npm:hono@^4.10.4",
+      "npm:tsup@^8.5.0",
+      "npm:typescript@^5.9.3"
+    ]
   }
 }

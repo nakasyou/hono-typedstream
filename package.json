@@ -11,9 +11,8 @@
       "types": "./dist/client.d.ts"
     }
   },
-  "dependencies": {
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3"
+  "peerDependencies": {
+    "hono": "^4.10.4"
   },
   "files": [
     "dist",
