@@ -20,5 +20,8 @@
     "README.md",
     "LICENSE"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/nakasyou/hono-typedstream"
+  }
 }
