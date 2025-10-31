@@ -1,3 +1,5 @@
+<img height="300" align="right" alt="image" src="https://github.com/user-attachments/assets/fcff202f-79bf-4028-a54e-5f5e8f9e3e4c" />
+
 # hono-typedstream
 
 `hono-typedstream` is a lightweight helper that lets Hono handlers stream JSON values line by line while keeping end-to-end TypeScript safety. The server utility turns a `ReadableStream` or `AsyncGenerator` into a Hono response, and the client utilities reconstruct each JSON line as typed objects.
