@@ -30,8 +30,8 @@ The package is published to [jsr.io/@ns/hono-typedstream](https://jsr.io/@ns/hon
 
 ```
 npx jsr add @ns/hono-typedstream # npm
-yarn dlx jsr add @ns/hono-typedstream # yarn
-pnpm dlx jsr add @ns/hono-typedstream # pnpm
+yarn add jsr:@ns/hono-typedstream # yarn
+pnpm add jsr:@ns/hono-typedstream # pnpm
 bunx jsr add @ns/hono-typedstream # bun
 deno add jsr:@ns/hono-typedstream # deno
 ```
