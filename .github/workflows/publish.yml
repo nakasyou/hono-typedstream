@@ -1,8 +1,13 @@
 name: Publish
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. v1.2.3 or 1.2.3)'
+        required: true
 
 jobs:
   publish:
@@ -17,13 +22,34 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - uses: denoland/setup-deno@v2
-
+      - name: Resolve release version
+        id: release_version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || '' }}
+          INPUT_VERSION: ${{ github.event.inputs.version || '' }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          raw="${RELEASE_TAG:-${INPUT_VERSION:-$REF_NAME}}"
+          version="${raw#v}"
+          if [[ -z "${version}" || "${version}" == "${REF_NAME}" ]]; then
+            echo "A release tag or manual version input is required to derive the version." >&2
+            exit 1
+          fi
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+      - name: Sync version to deno.json
+        run: |
+          tmp="$(mktemp)"
+          jq --arg version "${{ steps.release_version.outputs.version }}" '.version = $version' deno.json > "${tmp}"
+          mv "${tmp}" deno.json
       - run: deno i
-
       - name: Update npm
         run: npm install -g npm@latest
-
       - run: deno task build
-
-      - run: npm publish
-      - run: npx jsr publish
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to JSR
+        run: npx jsr publish
+        env:
+          JSR_AUTH_TOKEN: ${{ secrets.JSR_TOKEN }}
